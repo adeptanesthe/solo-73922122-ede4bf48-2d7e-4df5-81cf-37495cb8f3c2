@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    image: oral-history-search
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: /data/oral_history.db
+    volumes:
+      - search_data:/data
+    restart: unless-stopped
+
+volumes:
+  search_data:
