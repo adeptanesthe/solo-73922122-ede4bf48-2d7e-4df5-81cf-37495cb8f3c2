@@ -8,6 +8,10 @@ services:
       DB_PATH: /data/oral_history.db
     volumes:
       - search_data:/data
+    # 与运行环境对齐：进程可用内存上限 256 MiB。
+    # 检索工作内存只取决于最大单篇稿件、查询词数与页长，与在刊稿总数无关。
+    mem_limit: 256m
+    mem_reservation: 128m
     restart: unless-stopped
 
 volumes:
